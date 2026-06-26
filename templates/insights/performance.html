@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Performance</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #eef2f3, #dfe9f3);
+            font-family: Arial;
+        }
+
+        .card {
+            border-radius: 15px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .big-accuracy {
+            font-size: 45px;
+            font-weight: bold;
+            color: #16a34a;
+        }
+
+        .progress {
+            height: 20px;
+            border-radius: 10px;
+        }
+
+        .progress-bar {
+            background: linear-gradient(to right, #22c55e, #4ade80);
+        }
+
+        .metric-card {
+            color: white;
+            font-weight: bold;
+        }
+
+        .acc { background: linear-gradient(to right, #3b82f6, #60a5fa); }
+        .pre { background: linear-gradient(to right, #a855f7, #c084fc); }
+        .rec { background: linear-gradient(to right, #22c55e, #4ade80); }
+        .f1  { background: linear-gradient(to right, #f59e0b, #fbbf24); }
+
+        table {
+            background: white;
+        }
+
+        h4, h5 {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+    <!-- Accuracy -->
+    <h4 class="text-center">Model Accuracy</h4>
+
+    <div class="text-center big-accuracy">{{ accuracy }}%</div>
+
+    <div class="progress mb-4">
+        <div class="progress-bar" style="width: {{ accuracy }}%"></div>
+    </div>
+
+    <!-- Metrics -->
+    <div class="row text-center mb-4">
+        <div class="col-md-3">
+            <div class="card metric-card acc">
+                Accuracy<br>{{ accuracy }}%
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card metric-card pre">
+                Precision<br>{{ precision }}%
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card metric-card rec">
+                Recall<br>{{ recall }}%
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card metric-card f1">
+                F1 Score<br>{{ f1 }}%
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <!-- Confusion Matrix -->
+        <div class="col-md-6">
+            <div class="card">
+                <h5>Confusion Matrix</h5>
+
+                <table class="table table-bordered text-center mt-3">
+                    <tr class="table-dark">
+                        <th></th>
+                        <th>Pred Safe</th>
+                        <th>Pred Unsafe</th>
+                    </tr>
+                    <tr>
+                        <th class="table-success">Actual Safe</th>
+                        <td>{{ cm[1][1] }}</td>
+                        <td>{{ cm[1][0] }}</td>
+                    </tr>
+                    <tr>
+                        <th class="table-danger">Actual Unsafe</th>
+                        <td>{{ cm[0][1] }}</td>
+                        <td>{{ cm[0][0] }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="col-md-6">
+            <div class="card">
+                <h5>Performance Chart</h5>
+                <canvas id="barChart"></canvas>
+            </div>
+
+            <div class="card mt-3">
+                <h5>Prediction Distribution</h5>
+                <canvas id="pieChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+new Chart(document.getElementById("barChart"), {
+    type: "bar",
+    data: {
+        labels: ["Accuracy","Precision","Recall","F1"],
+        datasets: [{
+            data: [{{ accuracy }}, {{ precision }}, {{ recall }}, {{ f1 }}],
+            backgroundColor: ["#3b82f6","#a855f7","#22c55e","#f59e0b"]
+        }]
+    }
+});
+
+new Chart(document.getElementById("pieChart"), {
+    type: "pie",
+    data: {
+        labels: ["Safe","Unsafe"],
+        datasets: [{
+            data: [{{ cm[1][1] + cm[0][1] }}, {{ cm[1][0] + cm[0][0] }}],
+            backgroundColor: ["#22c55e","#ef4444"]
+        }]
+    }
+});
+</script>
+
+</body>
+</html>
