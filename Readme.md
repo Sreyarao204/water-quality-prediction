@@ -2,52 +2,159 @@
 
 ## 📖 Project Overview
 
-This project predicts water quality using Machine Learning algorithms based on water parameters such as pH, Turbidity, Dissolved Oxygen, Conductivity, Temperature, Nitrate, and Chloride.
+Water Quality Prediction using Machine Learning is a web-based application that predicts whether water is suitable for drinking based on various water quality parameters. The system applies Machine Learning algorithms to analyze water samples and provide accurate predictions through an interactive web interface.
 
-The system helps determine whether water is suitable for:
-- Drinking
-- Irrigation
-- Domestic Use
+This project aims to support faster and more reliable water quality assessment for environmental monitoring and decision-making.
 
 ---
 
-## 🚀 Technologies Used
+## 🚀 Features
 
+- 👤 User Registration and Login
+- 💧 Water Quality Prediction
+- 📂 Upload Water Quality Dataset
+- 📊 Dashboard and Data Visualization
+- 📜 Prediction History
+- 📄 Report Generation
+- 🤖 Multiple Machine Learning Algorithms
+- 💾 SQLite Database Integration
+- 🌐 Interactive Flask Web Application
+
+---
+
+## 🛠️ Technologies Used
+
+### Programming Language
 - Python
-- Flask
+
+### Frontend
 - HTML
 - CSS
-- JavaScript
+- Bootstrap
+
+### Backend
+- Flask
+
+### Database
+- SQLite
+
+### Machine Learning
+- Scikit-learn
 - Pandas
 - NumPy
-- Scikit-Learn
+
+### Data Visualization
 - Matplotlib
-- SQLite
+- Seaborn
 
 ---
 
-## 📸 Application Screenshots
+## 🤖 Machine Learning Algorithms
 
-### Dashboard
+The project evaluates multiple Machine Learning algorithms for water quality prediction, including:
 
-![Dashboard](screenshots/dashboard.jpeg)
+- Random Forest
+- Support Vector Machine (SVM)
+- Decision Tree
+- Logistic Regression
+- K-Nearest Neighbors (if implemented)
 
-### Upload Dataset
+The final prediction is generated using the best-performing trained model.
 
-![Upload](screenshots/data_upload.jpeg)
+---
 
-### Prediction
+## 📂 Project Structure
 
-![Prediction](screenshots/predict.jpeg)
+```
+water-quality-project/
+│
+├── app.py
+├── model.py
+├── users.db
+├── requirements.txt
+├── README.md
+├── final_report.pdf
+├── static/
+├── templates/
+└── screenshots/
+```
 
-### Analysis
+---
 
-![Analysis](screenshots/analysis.jpeg)
+## ⚙️ Installation
 
-### Model Accuracy
+Clone the repository
 
-![Accuracy](screenshots/model_accuracy.jpeg)
+```bash
+git clone <repository-url>
+```
 
-### Feature Importance
+Navigate into the project
 
-![Feature Importance](screenshots/feature_importance.jpeg)
+```bash
+cd water-quality-project
+```
+
+Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the application
+
+```bash
+python app.py
+```
+
+Open your browser
+
+```
+http://127.0.0.1:5000
+```
+
+---
+
+## 📊 Workflow
+
+1. User Login / Registration
+2. Upload Dataset or Enter Water Parameters
+3. Data Preprocessing
+4. Machine Learning Prediction
+5. Display Prediction Results
+6. Save Prediction History
+7. Generate Reports
+
+---
+
+## 📸 Screenshots
+
+Add screenshots inside the `screenshots` folder and display them here.
+
+Example:
+
+- Home Page
+- Login Page
+- Prediction Page
+- Dashboard
+- Prediction Result
+
+---
+
+## 🎯 Future Enhancements
+
+- Deep Learning Models
+- Real-time IoT Sensor Integration
+- Cloud Deployment
+- Mobile Application
+- Live Water Quality Monitoring
+
+---
+
+## 👩‍💻 Author
+
+**Sreya Rao Velgapuri**
+
+B.Tech Graduate | Aspiring Data Analyst
+
+GitHub Portfolio Project
